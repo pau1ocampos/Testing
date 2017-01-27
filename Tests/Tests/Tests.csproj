@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CookieMeal.cs" />
+    <Compile Include="CookieMealException.cs" />
+    <Compile Include="DoesSomeStuffService.cs" />
     <Compile Include="Guard.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
