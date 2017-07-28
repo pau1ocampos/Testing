@@ -3,43 +3,43 @@
     using System;
     public class DoesSomeStuffService
     {
-        private string CookieMonstersMood = string.Empty;
+        private string _cookieMonstersMood = string.Empty;
 
         public double CalculateCookiesMean()
         {
             var cookieMeal = this.GenerateCookiesAndMonsters();
 
-            Guard.Against<DivideByZeroException>(cookieMeal.CookieMonsters == 0, "There are no cookie monsters to eat the cookies! =(");
+            Guard.Evaluate<DivideByZeroException>(cookieMeal.CookieMonsters == 0, "There are no cookie monsters to eat the cookies! =(");
             var result = (double)(cookieMeal.TotalCookies / cookieMeal.CookieMonsters);
             return Math.Round(result, 2);
         }
 
         public double CalculatesCookiesForMonsters(int numberOfCookieMonsters)
         {
-            Guard.Against<DivideByZeroException>(numberOfCookieMonsters == 0);
+            Guard.Evaluate<DivideByZeroException>(numberOfCookieMonsters == 0);
             var result = (double)(500 / numberOfCookieMonsters);
 
-            this.CookieMonstersMood = "Dunno!";
+            this._cookieMonstersMood = "Dunno!";
 
             return Math.Round(result, 2);
         }
 
         public void CheckCookiePackageAmount(int minAmount, int maxAmount)
         {
-            Guard.Against<IndexOutOfRangeException>(minAmount > 0 || maxAmount < 100, "This cookie package does not exist in real world... please feed the Cookie Monsters properly! Don't scam them, they are fluffy!");
-            CookieMonstersMood = "Awesome!";
+            Guard.Evaluate<IndexOutOfRangeException>(minAmount > 0 || maxAmount < 100, "This cookie package does not exist in real world... please feed the Cookie Monsters properly! Don't scam them, they are fluffy!");
+            _cookieMonstersMood = "Awesome!";
         }
 
         public void NullCookieMeal()
         {
             CookieMeal cookieMeal = null;
-            this.CookieMonstersMood = "Sad!";
-            Guard.Against<NullReferenceException>(cookieMeal == null, "There's no meal. :'( Cookie Monsters are sad!", new CookieMealException("Please, create a meal!"));
+            this._cookieMonstersMood = "Sad!";
+            Guard.Evaluate<NullReferenceException>(cookieMeal == null, "There's no meal. :'( Cookie Monsters are sad!", new CookieMealException("Please, create a meal!"));
         }
 
         public string GetCookieMonsterMood()
         {
-            return "The Cookie Monsters are " + this.CookieMonstersMood;
+            return "The Cookie Monsters are " + this._cookieMonstersMood;
         }
 
         private CookieMeal GenerateCookiesAndMonsters()

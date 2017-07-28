@@ -22,7 +22,7 @@ namespace Tests
                 service.CalculateCookiesMean();
                 Console.WriteLine(service.GetCookieMonsterMood());
             }
-            catch (Exception e)
+            catch (DivideByZeroException e)
             {
                 Log(e);
             }
